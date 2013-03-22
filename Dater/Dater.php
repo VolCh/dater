@@ -57,13 +57,13 @@ class Dater {
 	}
 
 	/**
-	 * Get locale by 2-chars code: en, ru, ua
-	 * @param $code
+	 * Get locale by language code according ISO 639-1 (in two first chars) code: en, ru, ua
+	 * @param string $code
 	 * @throws Exception
-	 * @return
+	 * @return Dater_Locale
 	 */
 	public static function getLocaleByCode($code) {
-		$code = strtolower($code);
+		$code = strtolower(substr($code, 0, 2));
 		if(!isset(static::$localesCodes[$code])) {
 			throw new Exception('Unknown locale code "' . $code . '". See available codes in Dater::$localeCodes.');
 		}
